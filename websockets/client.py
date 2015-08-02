@@ -132,7 +132,7 @@ def connect(uri, *,
     wsuri = parse_uri(uri)
     if wsuri.secure:
         kwds.setdefault('ssl', True)
-    elif 'ssl' in kwds:
+    elif 'ssl' in kwds and kwds['ssl'] is not None:
         raise ValueError("connect() received a SSL context for a ws:// URI. "
                          "Use a wss:// URI to enable TLS.")
     factory = lambda: klass(
